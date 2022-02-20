@@ -14,20 +14,28 @@
     <title>Calculator</title>
   </head>
   <body>
-    <h1>Lorem ipsum</h1>
+    <h1>BMI Calculator</h1>
     <div class="container">
-      <p class="title">Lorem ipsum</p>
+      <p class="title">Enter your weight and height and hit the button</p>
       <!-- <div class="inter-container"> -->
       <div class="input-container">
-        <input class="input weight" type="number" placeholder="Enter your weight" />
-        <input class="input height" type="number" placeholder="Enter your height" />
-        <button class="check">lorem</button>
+        <input
+          class="input height"
+          type="number"
+          placeholder="Enter your height"
+        />
+        <input
+          class="input weight"
+          type="number"
+          placeholder="Enter your weight"
+          required="required"
+        />
+        <button class="check">Calculate BMI</button>
       </div>
       <div class="output-container">
-        <p class="output-title">lorem <span class="output"></span></p>
-        <p class="description">Description: </p>
+        <p class="output-title">Your BMI is:<span class="output"> </span></p>
+        <p class="description"></p>
       </div>
-      <!-- </div> -->
     </div>
   </body>
 

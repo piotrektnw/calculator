@@ -1,6 +1,7 @@
 const weight = document.querySelector('.weight');
 const height = document.querySelector('.height');
 const output = document.querySelector('.output');
+const input = document.querySelectorAll('.input');
 const check = document.querySelector('.check');
 const body = document.querySelector('body');
 const description = document.querySelector('.description')
@@ -10,18 +11,33 @@ const countBMI = () => {
     let bmi; 
     let score;
     let meterHeight
+    
+    if (height.value && weight.value)
+    {
+    switch (true) {
+        case (height.value <= 2.5):
+            score = weight.value/(height.value*height.value);
+            break;
+        case (height.value > 2.5 && height.value < 80):
+            description.innerHTML = "Please provide height in meters or centimeters"
+            return
+        case (height.value >= 80):
+            meterHeight = height.value/100;
+            score = weight.value/(meterHeight*meterHeight);
+            break;
 
-    if (height.value < 50) {
-    score = weight.value/(height.value*height.value);
-    } else if (height.value > 100) {
-        meterHeight = height.value/100;
-        score = weight.value/(meterHeight*meterHeight);
+        default:
+            break;  
     }
-
+    } else {
+        description.innerHTML = "Please fill height and weight";
+        return
+    }
     bmi = Math.round(score);
     output.innerHTML = bmi;
     changeBodyBg(bmi)
 }
+
 
 const changeBodyBg = (bmi) => {
     
@@ -67,4 +83,6 @@ const changeBodyBg = (bmi) => {
 }
 
 check.addEventListener('click', countBMI)
+check.addEventListener('click', verify)
+
 

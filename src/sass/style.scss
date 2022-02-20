@@ -11,11 +11,15 @@ body {
   overflow-x: hidden;
   background-color: #af8c9d;
   // background-image: linear-gradient(315deg, #af8c9d 0%, #8cacac 74%);
-  transition: .5s;
+  transition: 0.5s;
 }
 
 :focus {
   outline: none;
+}
+
+.warning {
+  border: solid 2px red;
 }
 
 ::-webkit-input-placeholder {
