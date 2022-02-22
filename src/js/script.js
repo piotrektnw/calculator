@@ -6,36 +6,47 @@ const check = document.querySelector('.check');
 const body = document.querySelector('body');
 const description = document.querySelector('.description')
 
+class User {
+    constructor (height, weight) {
+        this.height = height;
+        this.weight = weight;
+    }
+
+    userBmi() {
+        let newBmi = this.weight/(Math.pow(this.height, 2));
+        return Math.round(newBmi*10)/10
+
+    }
+}
 
 const countBMI = () => {
-    let bmi; 
-    let score;
-    let meterHeight
-    
-    if (height.value && weight.value)
-    {
-    switch (true) {
-        case (height.value <= 2.5):
-            score = weight.value/(height.value*height.value);
-            break;
-        case (height.value > 2.5 && height.value < 80):
-            description.innerHTML = "Please provide height in meters or centimeters"
-            return
-        case (height.value >= 80):
-            meterHeight = height.value/100;
-            score = weight.value/(meterHeight*meterHeight);
-            break;
 
-        default:
-            break;  
-    }
-    } else {
-        description.innerHTML = "Please fill height and weight";
-        return
-    }
-    bmi = Math.round(score);
-    output.innerHTML = bmi;
-    changeBodyBg(bmi)
+    const visitor = new User(height.value, weight.value)
+
+    if (visitor.height && visitor.weight) {
+        
+        switch (true) {
+            case (visitor.height <= 2.5):
+
+                output.innerHTML = visitor.userBmi()
+                break;
+            case (height.value > 2.5 && height.value < 80):
+                description.innerHTML = "Please provide height in meters or centimeters"
+                return
+            case (visitor.height >= 80):
+                visitor.height = height.value/100;
+                output.innerHTML = visitor.userBmi(height, weight)
+                break;
+            default:
+                description.innerHTML = "Please fill height and weight";
+                break;  
+            }
+        } else {
+            description.innerHTML = "Please fill height and weight";
+            return
+        }
+
+    changeBodyBg(visitor.userBmi())
 }
 
 
@@ -83,6 +94,6 @@ const changeBodyBg = (bmi) => {
 }
 
 check.addEventListener('click', countBMI)
-check.addEventListener('click', verify)
+
 
 
