@@ -5,13 +5,11 @@
 }
 
 body {
-  height: 100vh;
   font-family: "Roboto", sans-serif;
   font-size: 62.5%;
   overflow-x: hidden;
   background-color: #af8c9d;
-  // background-image: linear-gradient(315deg, #af8c9d 0%, #8cacac 74%);
-  transition: 0.5s;
+  transition: 0.5s background-color;
 }
 
 :focus {
@@ -28,9 +26,9 @@ body {
   text-align: center;
 }
 
-h1 {
+.main-title {
   text-align: center;
-  padding: 1em 0 0.5em 0;
+  padding: 1em 5px 0.5em 5px;
   font-size: 3rem;
 }
 
@@ -50,13 +48,16 @@ h1 {
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 
   .title {
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.6rem;
     border-bottom: 1px solid #af8c9d;
-    margin: 0 auto;
-    padding-bottom: 1%;
+    margin: 5px;
+    padding: 10px 0;
+    text-align: center;
+    transition: 0.5s border-color;
   }
 
   .input-container {
@@ -65,11 +66,14 @@ h1 {
     height: 300px;
     display: flex;
     align-items: center;
+    
     flex-direction: column;
     justify-content: space-around;
 
     .input,
     .check {
+      text-align: center;
+      font-size: 1.4rem;
       height: 50px;
       width: 100%;
       margin: 1em;
@@ -81,27 +85,56 @@ h1 {
   }
 
   .output-container {
-    align-self: start;
-
     width: 50%;
+    min-height: 300px;
     min-width: 175px;
-    display: inline-block;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    flex-direction: column;
+    text-align: center;
 
-    .output-title {
-      font-size: 2rem;
-      padding-top: 5%;
-      text-align: center;
-    }
-
-    .output {
-      padding-top: 5%;
-      font-size: 3rem;
-    }
-
-    .output-title,
-    .output {
+    .output-item {
       width: 100%;
       display: block;
     }
+
+    .output-title {
+      font-size: 2rem;
+    }
+
+    .output {
+      font-size: 3rem;
+    }
+
+    .description {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    .title {
+      font-size: 1.4rem;
+    }
+  }
+  ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    font-size: 1.2rem;
+    text-align: center;
+  }
+}
+@media (max-width: 786px) {
+  .container {
+    .title {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 386px) {
+  .main-title {
+    font-size: 2rem;
   }
 }
