@@ -1,10 +1,22 @@
 const weight = document.querySelector('.weight');
 const height = document.querySelector('.height');
 const output = document.querySelector('.output');
-const check = document.querySelector('.check');
+const check = document.querySelectorAll('.check');
 const body = document.querySelector('body');
 const description = document.querySelector('.description');
-const title = document.querySelector('.title')
+const title = document.querySelector('.title');
+const lang = document.querySelector('.lang');
+const en = document.querySelectorAll('.en');
+const pl = document.querySelectorAll('.pl');
+
+const changeLang = () => {
+    en.forEach(item => {
+        item.classList.toggle('hide')
+    }) 
+    pl.forEach(item => {
+        item.classList.toggle('show')
+    }) 
+}
 
 class User {
     constructor (height, weight) {
@@ -95,12 +107,13 @@ const feedback = (bmi) => {
         default: 
         body.style.backgroundColor = "#fbf5f3";
         description.innerHTML = "Please try again!"
-
-   
     }
 }
 
-check.addEventListener('click', countBMI)
+check.forEach(button => {
+    button.addEventListener('click', countBMI)
+})
 
+lang.addEventListener('click', changeLang)
 
 

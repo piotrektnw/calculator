@@ -11,11 +11,15 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/dist/css/style.min.css" />
-    <title>Calculator</title>
+    <title>Simple BMI Calculator</title>
   </head>
   <body>
-    <h1 class="main-title">BMI Calculator</h1>
-    <div class="container">
+    <nav class="nav">
+      <button class="lang">pl/eng</button>
+    </nav>
+    <h1 class="main-title en">BMI Calculator</h1>
+    <h1 class="main-title pl">Kalkulator BMI</h1>
+    <div class="container en">
       <p class="title">Enter your weight and height and hit the button</p>
       <!-- <div class="inter-container"> -->
       <div class="input-container">
@@ -32,8 +36,32 @@
         />
         <button class="check">Calculate BMI</button>
       </div>
+
       <div class="output-container">
         <p class="output-item output-title">Your BMI is:</p>
+        <p class="output-item output"></p>
+        <p class="output-item description"></p>
+      </div>
+    </div>
+
+    <div class="container pl">
+      <p class="title">Wpisz swój wzrost oraz wagę i naciśnij przycisk</p>
+      <div class="input-container">
+        <input
+          class="input height"
+          type="number"
+          placeholder="Wpisz swój wzrost"
+        />
+        <input
+          class="input weight"
+          type="number"
+          placeholder="wpisz swoją wagę"
+          required="required"
+        />
+        <button class="check">Oblicz BMI</button>
+      </div>
+      <div class="output-container">
+        <p class="output-item output-title">Twoje BMI to:</p>
         <p class="output-item output"></p>
         <p class="output-item description"></p>
       </div>

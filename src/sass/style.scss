@@ -28,8 +28,29 @@ body {
 
 .main-title {
   text-align: center;
-  padding: 1em 5px 0.5em 5px;
+  padding: 1.5em 0.5em 0.5em 0.5em;
   font-size: 3rem;
+}
+
+.nav {
+  position: fixed;
+  display: flex;
+  justify-content: end;
+  padding: 1em;
+  width: 100%;
+
+  .lang {
+    margin: 0 0.5em;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    transition: 0.3s color;
+  }
+
+  .lang:hover{
+    color: white;
+    cursor: pointer;
+  }
 }
 
 .container {
@@ -66,7 +87,6 @@ body {
     height: 300px;
     display: flex;
     align-items: center;
-    
     flex-direction: column;
     justify-content: space-around;
 
@@ -113,6 +133,18 @@ body {
   }
 }
 
+.pl {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
 @media (max-width: 992px) {
   .container {
     .title {
@@ -136,5 +168,12 @@ body {
 @media (max-width: 386px) {
   .main-title {
     font-size: 2rem;
+    padding-top: 2em;
+  }
+  .nav {
+    .lang {
+      font-size: 1.4rem;
+      padding-right: 0.6em;
+    }
   }
 }
