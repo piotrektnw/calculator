@@ -1,10 +1,13 @@
 const weight = document.querySelector('.weight');
 const height = document.querySelector('.height');
-const output = document.querySelector('.output');
+const weightPl = document.querySelector('.weight-pl');
+const heightPl = document.querySelector('.height-pl');
+const output = document.querySelectorAll('.output');
 const check = document.querySelectorAll('.check');
 const body = document.querySelector('body');
 const description = document.querySelector('.description');
 const title = document.querySelector('.title');
+const mainTitle = document.querySelector('.pl')
 const lang = document.querySelector('.lang');
 const en = document.querySelectorAll('.en');
 const pl = document.querySelectorAll('.pl');
@@ -27,26 +30,35 @@ class User {
     userBmi() {
         let newBmi = this.weight/(Math.pow(this.height, 2));
         return Math.round(newBmi*10)/10
-
     }
 }
 
 const countBMI = () => {
 
-    const visitor = new User(height.value, weight.value)
+let visitor;
+   
+    !mainTitle.classList.contains('show') ?
+    visitor = new User(height.value, weight.value)  
+    : 
+    visitor = new User(heightPl.value, weightPl.value);
 
     if (visitor.height && visitor.weight) {
 
         switch (true) {
             case (visitor.height <= 2.5):
-                output.innerHTML = visitor.userBmi()
+                output.forEach(output => {
+                    output.innerHTML = visitor.userBmi()
+                })
+                
                 break;
             case (height.value > 2.5 && height.value < 80):
                 description.innerHTML = "Please provide height in meters or centimeters"
                 return
             case (visitor.height >= 80):
-                visitor.height = height.value/100;
-                output.innerHTML = visitor.userBmi()
+                visitor.height = visitor.height/100;
+                output.forEach(output => {
+                    output.innerHTML = visitor.userBmi()
+                })
                 break;
             default:
                 description.innerHTML = "Please fill height and weight";

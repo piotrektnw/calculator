@@ -47,7 +47,7 @@ body {
     transition: 0.3s color;
   }
 
-  .lang:hover{
+  .lang:hover {
     color: white;
     cursor: pointer;
   }
@@ -138,7 +138,8 @@ body {
 }
 
 .show {
-  display: block;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .hide {
