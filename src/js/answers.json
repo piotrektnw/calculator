@@ -1,0 +1,43 @@
+
+{
+    "extremelyLowBMI" : 
+     {   
+        "eng": "Your weight is too low and is dangerous for your health. It is strongly recommended to contact your doctor.",
+        "pl": "Twoja waga jest zbyt niska i zagraża Twojemu zdrowiu. Wizyta u lekarza lub dietetyka jest niezbędna."
+        },
+       "veryLowBMI" : 
+    {   
+        "eng": "You weight is low. It is suggested to contact your dietician.",
+        "pl": "Twoja waga jest niska. Rozważ wizytę u dietetyka."
+        },
+        "lowBMI" :
+    {
+        "eng":  "You are underweight. Consider gaining some weight.",
+        "pl":   "Masz niedowagę. Rozważ przybranie kilku kilogramów"
+        },
+        "norm" : 
+    {
+        "eng": "Congratulations! Your weight is great! Keep on doing this way!",
+        "pl" : "Gratulacje! Twoja waga jest w sam raz! Tak trzymaj!"
+    },
+        "overweight":
+        {
+        "eng": "According to BMI you are overweight. Please consider healthy diet.",
+        "pl": "Zgodnie ze wskaźnikiem BMI masz nadwagę. Rozważ zdrową dietę"
+    },
+        "obesity_first": 
+        {
+        "eng": "According to BMI you are in first phase of obesity. Please be careful and contact your doctor or dietician.",
+        "pl": "Zgodnie ze wskaźnikiem BMI jesteś w pierwszym stopniu otyłości. Zachowaj ostrożnośc i skontaktuj się z lekarzem lub dietetykiem."
+    },
+        "obesity_second":
+        {
+            "eng": "According to BMI you are in second phase of obesity.  It is strongly suggested to contact your doctor.",
+            "pl" : "Zgodnie ze wskaźnikiem BMI jesteś w drugiej fazie otyłości. Wizyta u lekarza jest niezbędna."
+    },
+        "obesity_third": 
+        {
+            "eng": "According to BMI you are in third phase of obesity. This weight is dangerous for your health. Please contact your doctor.",
+            "pl": "Zgodnie ze wskaźnikiem BMI jesteś w trzeciej fazie otyłości. Ta waga jest zagrożeniem dla Twojego zdrowia. Skontaktuj się z Twoim lekarzem."
+    }
+}

@@ -1,3 +1,4 @@
+
 const weight = document.querySelector('.weight');
 const height = document.querySelector('.height');
 const weightPl = document.querySelector('.weight-pl');
@@ -7,12 +8,11 @@ const check = document.querySelectorAll('.check');
 const body = document.querySelector('body');
 const description = document.querySelector('.description');
 const descriptionPL = document.querySelector('.description-pl');
-const title = document.querySelector('.title');
-const mainTitle = document.querySelector('.pl')
+const title = document.querySelectorAll('.title');
+const mainTitle = document.querySelector('.main-title-pl');
 const lang = document.querySelector('.lang');
 const en = document.querySelectorAll('.en');
 const pl = document.querySelectorAll('.pl');
-
 
 const changeLang = () => {
     en.forEach(item => {
@@ -50,10 +50,15 @@ const countBMI = () => {
                 output.forEach(output => {
                     output.innerHTML = visitor.userBmi()
                 })
-                
                 break;
             case (height.value > 2.5 && height.value < 80):
-                description.innerHTML = "Please provide height in meters or centimeters"
+               
+                description.innerHTML = answers.wrong_format.eng;
+                descriptionPL.innerHTML = answers.wrong_format.pl;
+                output.forEach(output => {
+                    output.innerHTML = answers.clear_input.clear
+                })
+                
                 return
             case (visitor.height >= 80):
                 visitor.height = visitor.height/100;
@@ -62,11 +67,13 @@ const countBMI = () => {
                 })
                 break;
             default:
-                description.innerHTML = "Please fill height and weight";
+                description.innerHTML = answers.missing_input.eng
+                descriptionPL.innerHTML =  answers.missing_input.pl
                 break;  
             }
         } else {
-            description.innerHTML = "Please fill height and weight";
+            description.innerHTML = answers.missing_input.eng
+            descriptionPL.innerHTML =  answers.missing_input.pl
             return
         }
 
@@ -79,49 +86,65 @@ const feedback = (bmi) => {
     switch (true) {
         case (bmi < 16):
             body.style.backgroundColor = "#c1121f";
-            title.style.borderColor = "#c1121f";
+            title.forEach(item =>{
+                item.style.borderColor = "#c1121f"
+            });
             description.innerHTML = answers.extremelyLowBMI.eng
             descriptionPL.innerHTML = answers.extremelyLowBMI.pl
-        break;
-        case (bmi > 16 && bmi < 17):
+            break;
+        case (bmi >= 16 && bmi < 17):
             body.style.backgroundColor = "#780000";
-            title.style.borderColor = "#780000";
+            title.forEach(item =>{
+                item.style.borderColor = "#780000"
+            });
             description.innerHTML = answers.veryLowBMI.eng
             descriptionPL.innerHTML = answers.veryLowBMI.pl
         break;
         case (bmi >= 17 && bmi <= 18.5):
             body.style.backgroundColor = "#f7b538";
-            title.style.borderColor = "#f7b538";
+            title.forEach(item =>{
+                item.style.borderColor = "#f7b538"
+            });
             description.innerHTML = answers.lowBMI.eng
             descriptionPL.innerHTML = answers.lowBMI.pl
         break;
         case (bmi > 18.5 && bmi < 25):
             body.style.backgroundColor = "#7ddf64";
-            title.style.borderColor = "#7ddf64";
+            title.forEach(item =>{
+                item.style.borderColor = "#7ddf64"
+            });
             description.innerHTML = answers.norm.eng
             descriptionPL.innerHTML = answers.norm.pl
         break;
         case (bmi >= 25 && bmi < 30):
             body.style.backgroundColor = "#f7b538";
-            title.style.borderColor = "#f7b538";
+            title.forEach(item =>{
+                item.style.borderColor = "#f7b538"
+            });
             description.innerHTML = answers.overweight.eng
             description.innerHTML = answers.overweight.pl
         break;
         case (bmi >= 30 && bmi < 35):
             body.style.backgroundColor = "#780000";
-            title.style.borderColor = "#780000";
+            title.forEach(item =>{
+                item.style.borderColor = "#780000"
+            });
             description.innerHTML = answers.obesity_first.eng
             descriptionPL.innerHTML = answers.obesity_first.pl
         break;
         case (bmi >= 35 && bmi < 40):
             body.style.backgroundColor = "#c1121f";
-            title.style.borderColor = "#c1121f";
+            title.forEach(item =>{
+                item.style.borderColor = "#c1121f"
+            });
             description.innerHTML = answers.obesity_second.eng
             descriptionPL.innerHTML = answers.obesity_second.pl
         break;
         case (bmi >= 40):
             body.style.backgroundColor = "#d90429";
-            title.style.borderColor = "#d90429";
+            title.forEach(item =>{
+                item.style.borderColor = "#d90429"
+            });
             description.innerHTML = answers.obesity_third.eng
             descriptionPL.innerHTML = answers.obesity_third.pl
         break;
@@ -179,5 +202,19 @@ const answers = {
         {
             "eng": "According to BMI you are in third phase of obesity. This weight is dangerous for your health. Please contact your doctor.",
             "pl": "Zgodnie ze wskaźnikiem BMI jesteś w trzeciej fazie otyłości. Ta waga jest zagrożeniem dla Twojego zdrowia. Skontaktuj się z Twoim lekarzem."
+    },
+    "wrong_format":
+    {
+            "eng": "Please provide height in meters or centimeters",
+            "pl" : "Proszę wprowadzić wysokość w metrach lub centymetrach"
+    },
+    "missing_input": {
+        "eng": "Please fill height and weight",
+        "pl" : "Proszę wprowadzić wysokość oraz wagę"
+    },
+    "clear_input": 
+    {
+        "clear": " "
     }
+    
 }
