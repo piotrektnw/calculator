@@ -6,11 +6,13 @@ const output = document.querySelectorAll('.output');
 const check = document.querySelectorAll('.check');
 const body = document.querySelector('body');
 const description = document.querySelector('.description');
+const descriptionPL = document.querySelector('.description-pl');
 const title = document.querySelector('.title');
 const mainTitle = document.querySelector('.pl')
 const lang = document.querySelector('.lang');
 const en = document.querySelectorAll('.en');
 const pl = document.querySelectorAll('.pl');
+
 
 const changeLang = () => {
     en.forEach(item => {
@@ -26,7 +28,6 @@ class User {
         this.height = height;
         this.weight = weight;
     }
-
     userBmi() {
         let newBmi = this.weight/(Math.pow(this.height, 2));
         return Math.round(newBmi*10)/10
@@ -35,12 +36,12 @@ class User {
 
 const countBMI = () => {
 
-let visitor;
+    let visitor;
    
     !mainTitle.classList.contains('show') ?
-    visitor = new User(height.value, weight.value)  
-    : 
-    visitor = new User(heightPl.value, weightPl.value);
+        visitor = new User(height.value, weight.value)  
+        : 
+        visitor = new User(heightPl.value, weightPl.value);
 
     if (visitor.height && visitor.weight) {
 
@@ -77,44 +78,52 @@ const feedback = (bmi) => {
     
     switch (true) {
         case (bmi < 16):
-        body.style.backgroundColor = "#c1121f";
-        title.style.borderColor = "#c1121f";
-        description.innerHTML = "You are very malnourished. It is strongly recommended to contact your doctor."
+            body.style.backgroundColor = "#c1121f";
+            title.style.borderColor = "#c1121f";
+            description.innerHTML = answers.extremelyLowBMI.eng
+            descriptionPL.innerHTML = answers.extremelyLowBMI.pl
         break;
         case (bmi > 16 && bmi < 17):
             body.style.backgroundColor = "#780000";
             title.style.borderColor = "#780000";
-            description.innerHTML = "You are malnourished. It is suggested to contact your doctor."
+            description.innerHTML = answers.veryLowBMI.eng
+            descriptionPL.innerHTML = answers.veryLowBMI.pl
         break;
         case (bmi >= 17 && bmi <= 18.5):
             body.style.backgroundColor = "#f7b538";
             title.style.borderColor = "#f7b538";
-            description.innerHTML = "You are underweight. It is suggested to think about gaining weight."
+            description.innerHTML = answers.lowBMI.eng
+            descriptionPL.innerHTML = answers.lowBMI.pl
         break;
         case (bmi > 18.5 && bmi < 25):
             body.style.backgroundColor = "#7ddf64";
             title.style.borderColor = "#7ddf64";
-            description.innerHTML = "Congratulations! Your weight is great! Keep on doing this way!"
+            description.innerHTML = answers.norm.eng
+            descriptionPL.innerHTML = answers.norm.pl
         break;
         case (bmi >= 25 && bmi < 30):
             body.style.backgroundColor = "#f7b538";
             title.style.borderColor = "#f7b538";
-            description.innerHTML = "According to BMI you are overweight. Please consider healthy diet."
+            description.innerHTML = answers.overweight.eng
+            description.innerHTML = answers.overweight.pl
         break;
         case (bmi >= 30 && bmi < 35):
             body.style.backgroundColor = "#780000";
             title.style.borderColor = "#780000";
-            description.innerHTML = "According to BMI you are in first phase of obesity. Please be careful and contact your doctor or dietician."
+            description.innerHTML = answers.obesity_first.eng
+            descriptionPL.innerHTML = answers.obesity_first.pl
         break;
         case (bmi >= 35 && bmi < 40):
             body.style.backgroundColor = "#c1121f";
             title.style.borderColor = "#c1121f";
-            description.innerHTML = "According to BMI you are in second phase of obesity.  It is strongly suggested to contact your doctor."
+            description.innerHTML = answers.obesity_second.eng
+            descriptionPL.innerHTML = answers.obesity_second.pl
         break;
         case (bmi >= 40):
             body.style.backgroundColor = "#d90429";
             title.style.borderColor = "#d90429";
-            description.innerHTML = "Third phase of obesity. This weight is dangerous for your health. Please contact your doctor."
+            description.innerHTML = answers.obesity_third.eng
+            descriptionPL.innerHTML = answers.obesity_third.pl
         break;
         default: 
         body.style.backgroundColor = "#fbf5f3";
@@ -129,3 +138,46 @@ check.forEach(button => {
 lang.addEventListener('click', changeLang)
 
 
+
+const answers = {
+    "extremelyLowBMI" : 
+     {   
+        "eng": "Your weight is too low and is dangerous for your health. It is strongly recommended to contact your doctor.",
+        "pl": "Twoja waga jest zbyt niska i zagraża Twojemu zdrowiu. Wizyta u lekarza lub dietetyka jest niezbędna."
+        },
+       "veryLowBMI" : 
+    {   
+        "eng": "You weight is low. It is suggested to contact your dietician.",
+        "pl": "Twoja waga jest niska. Rozważ wizytę u dietetyka."
+        },
+        "lowBMI" :
+    {
+        "eng":  "You are underweight. Consider gaining some weight.",
+        "pl":   "Masz niedowagę. Rozważ przybranie kilku kilogramów"
+        },
+        "norm" : 
+    {
+        "eng": "Congratulations! Your weight is great! Keep on doing this way!",
+        "pl" : "Gratulacje! Twoja waga jest w sam raz! Tak trzymaj!"
+    },
+        "overweight":
+        {
+        "eng": "According to BMI you are overweight. Please consider healthy diet.",
+        "pl": "Zgodnie ze wskaźnikiem BMI masz nadwagę. Rozważ zdrową dietę"
+    },
+        "obesity_first": 
+        {
+        "eng": "According to BMI you are in first phase of obesity. Please be careful and contact your doctor or dietician.",
+        "pl": "Zgodnie ze wskaźnikiem BMI jesteś w pierwszym stopniu otyłości. Zachowaj ostrożnośc i skontaktuj się z lekarzem lub dietetykiem."
+    },
+        "obesity_second":
+        {
+            "eng": "According to BMI you are in second phase of obesity.  It is strongly suggested to contact your doctor.",
+            "pl" : "Zgodnie ze wskaźnikiem BMI jesteś w drugiej fazie otyłości. Wizyta u lekarza jest niezbędna."
+    },
+        "obesity_third": 
+        {
+            "eng": "According to BMI you are in third phase of obesity. This weight is dangerous for your health. Please contact your doctor.",
+            "pl": "Zgodnie ze wskaźnikiem BMI jesteś w trzeciej fazie otyłości. Ta waga jest zagrożeniem dla Twojego zdrowia. Skontaktuj się z Twoim lekarzem."
+    }
+}
