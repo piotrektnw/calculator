@@ -39,15 +39,20 @@ body {
   padding: 1em;
   width: 100%;
 
-  .lang {
+  .nav-item {
+    color: black;
     margin: 0 0.5em;
     background: none;
     border: none;
     font-size: 2rem;
     transition: 0.3s color;
+    a {
+      text-decoration: none;
+    }
   }
 
-  .lang:hover {
+  .nav-item:hover,
+  a:hover {
     color: white;
     cursor: pointer;
   }
@@ -145,6 +150,45 @@ body {
 
 .hide {
   display: none;
+}
+
+//to do list
+
+.task-list-container {
+  width: 100%;
+  background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .task-list {
+    width: 100%;
+    background-color: yellow;
+    padding-top: 1%;
+    display: inline-block;
+  }
+}
+
+.li-class {
+  background-color: royalblue;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+  }
+
 }
 
 @media (max-width: 992px) {

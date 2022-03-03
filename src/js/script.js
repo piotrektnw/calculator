@@ -13,6 +13,11 @@ const mainTitle = document.querySelector('.main-title-pl');
 const lang = document.querySelector('.lang');
 const en = document.querySelectorAll('.en');
 const pl = document.querySelectorAll('.pl');
+const task = document.querySelector('#task');
+const submit = document.querySelector('#submit');
+const taskList = document.querySelector('#task-list');
+const tasks = document.querySelector('#tasks');
+const form = document.querySelector('form');
 
 const changeLang = () => {
     en.forEach(item => {
@@ -33,6 +38,7 @@ class User {
         return Math.round(newBmi*10)/10
     }
 }
+
 
 const countBMI = () => {
 
@@ -161,6 +167,54 @@ check.forEach(button => {
 lang.addEventListener('click', changeLang)
 
 
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    submit.disabled = true
+    task.onkeyup = () => {
+       if (task.value.length > 0) {
+           submit.disabled = false
+       } else {
+           submit.disabled = true
+       }
+   }
+
+    form.onsubmit = () => {
+        
+        const newTask = task.value;
+        const li = document.createElement('li')
+        li.innerHTML = newTask
+        li.classList.add("li-class")
+        const bt = document.createElement('button')
+        bt.innerHTML = "x"
+        li.append(bt)
+        tasks.append(li)
+        task.value = '';
+        submit.disabled = true;
+       
+
+        return false
+    }
+
+    
+
+  
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ANSWERS
 
 const answers = {
     "extremelyLowBMI" : 
